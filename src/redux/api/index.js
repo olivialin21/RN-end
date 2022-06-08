@@ -16,7 +16,15 @@ const getAuthorizationHeader = function() {
 }
 
 export const getBikeStations = async ( location, filter ) => {
-  return await axios.get(`https://ptx.transportdata.tw/MOTC/v2/Bike/Station/NearBy?%24spatialFilter=nearby(${location.latitude}%2C%20${location.longitude}%2C%20250)&%24format=JSON`,
+	// ServiceType%20eq%20${serviceType}&
+  return await axios.get(`https://ptx.transportdata.tw/MOTC/v2/Bike/Station/NearBy?%24filter=%24spatialFilter=nearby(${location.latitude}%2C%20${location.longitude}%2C%20250)&%24format=JSON`,
+  {
+     headers:getAuthorizationHeader()
+  });
+}
+
+export const getRealTimeData = async ( locationID ) => {
+	return await axios.get(`https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/Taipei?%24filter=StationID%20eq%20'${locationID}'&%24format=JSON`,
   {
      headers:getAuthorizationHeader()
   });

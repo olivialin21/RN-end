@@ -3,9 +3,9 @@ import { Center, Pressable, Actionsheet, useDisclose, Image } from 'native-base'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import ActionScreen from '../screens/ActionScreen';
 
-export default (props) => {
+const ActionButton = (props) => {
   const { isOpen, onOpen, onClose } = useDisclose();
-  const { zoomRatio, station } = props;
+  const { zoomRatio, station, method } = props;
   return (
     <>
       <Pressable onPress={onOpen}>
@@ -17,8 +17,10 @@ export default (props) => {
         />
       </Pressable>
       <Actionsheet isOpen={isOpen} onClose={onClose}>
-        <ActionScreen onClose={onClose} station={station} />
+        <ActionScreen onClose={onClose} station={station} method={method}/>
       </Actionsheet>
     </>
   );
 }
+
+export default ActionButton;

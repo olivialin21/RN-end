@@ -5,6 +5,7 @@ import {
 
 import {
   getBikeStations,
+  getRealTimeData
 } from "../api"
 
 export const setRegion = (region) => async (dispatch) => {
@@ -20,4 +21,10 @@ export const setBikeStations = (location, filter) => async (dispatch) => {
     type: SET_BIKE_STATIONS,
     payload: bikeStations.data
   })
+}
+
+export const setBikeRealTimeData = (location) => async (dispatch) => {
+  let bikeRealTimeData = await getRealTimeData(location.StationID);
+  let data = bikeRealTimeData.data;
+  return (data);
 }

@@ -18,18 +18,10 @@ const Map = ({ method }) => {
   const filter = useSelector((state) => (state.settings.search.filter));
   const bikeStations = useSelector((state) => (state.map.bikeStations));
   const region = useSelector((state) => (state.map.region));
-  // const starList = useSelector((state) => (state.star.starList));
 
   const [regionNow, setRegionNow] = useState(region);
   const [onCurrentLocation, setOnCurrentLocation] = useState(false);
   const [zoomRatio, setZoomRatio] = useState(1);
-
-  // const [marker, setMarker] = useState({
-  //   coord: {
-  //     longitude: 121.544637,
-  //     latitude: 25.024624,
-  //   }
-  // });
 
   const setRegionAndMarker = (location) => {
     dispatch(setRegion(location));
@@ -129,7 +121,7 @@ useEffect (() => {
             //   dispatch(setRegion(locationAdd));
             // }}
           >
-            <ActionButton zoomRatio={zoomRatio} station={station} />
+            <ActionButton zoomRatio={zoomRatio} station={station} method={method}/>
           </Marker>
         ))}
       </MapView>

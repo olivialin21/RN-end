@@ -8,6 +8,7 @@ import { store } from './src/redux/store';
 import Navigation from './src/navigation';
 
 const App = () => {
+  LogBox.ignoreAllLogs(true);
   return (
     <SafeAreaProvider>
       <Provider store={store}>

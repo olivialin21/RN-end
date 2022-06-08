@@ -32,7 +32,7 @@ const StarMapScreen = ({ route }) => {
         >
           <Image
             alt="bikeIcon"
-            source={route.ServiceType == 1 ? require("../images/btn_1.png") : require("../images/btn_2.png")}
+            source={route.params.ServiceType == 1 ? require("../images/btn_1.png") : require("../images/btn_2.png")}
             style={{ width: 36, height: 36 , marginBottom: 14 }}
             resizeMode="contain"
           />

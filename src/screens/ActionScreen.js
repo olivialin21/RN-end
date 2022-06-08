@@ -4,12 +4,14 @@ import { useTheme } from '@react-navigation/native';
 import { Box, VStack, HStack, Center, Text, Pressable } from 'native-base';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
+import { setBikeRealTimeData } from "../redux/actions/mapActions";
 import { setStarList } from "../redux/actions/starActions";
 
-const ActionScreen = ({ onClose, station }) => {
+const ActionScreen = ({ onClose, station, method }) => {
    const dispatch = useDispatch();
    const { colors, fontSizes } = useTheme();
    const [ star, setStar ] = useState(false);
+   const [ realTimeData, setRealTimeData ] = useState({});
    const starList = useSelector((state) => (state.star.starList));
 
    const {
@@ -33,6 +35,21 @@ const ActionScreen = ({ onClose, station }) => {
       return time;
    }
    
+   const getData = async () => {
+      let data = await dispatch(setBikeRealTimeData(station));
+      setRealTimeData(...data);
+      console.log(realTimeData);
+   }
+
+   useEffect (() => {
+      if (starList.includes(station)) {
+         setStar(true);
+       } else {
+         setStar(false);
+       }
+      getData();
+   },[])
+
    useEffect (() => {
      if (starList.includes(station)) {
        setStar(true);
@@ -62,12 +79,20 @@ const ActionScreen = ({ onClose, station }) => {
             </Pressable>
             <Box px={3} >
                <Text fontSize="lg" fontWeight={'bold'} mb={5} textAlign="left">
-                  {StationName.Zh_tw.slice()}
+                  {StationName.Zh_tw.slice(11)}
                </Text>
                <Text><Text fontWeight={'bold'}>地址：</Text>{StationAddress.Zh_tw}</Text>
                <Text mt={2}><Text fontWeight={'bold'}>更新時間：</Text>{getTime(UpdateTime)}</Text>
                <Center>
-                  可借、可還
+                  {method == "rent" ? 
+                     <Text>
+                        可借：{realTimeData.AvailableRentBikes}
+                     </Text> : 
+                     <Text>
+                        可還：{realTimeData.AvailableReturnBikes}
+                     </Text>
+                  }
+                  
                </Center>
             </Box>
          </HStack>

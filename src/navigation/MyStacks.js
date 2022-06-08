@@ -124,7 +124,7 @@ export const StarStack = ({ navigation }) => {
         component={StarMapScreen}
         options={({ route }) => ({
           headerTintColor: colorMode == 'light' ? 'black' : 'white',
-          title: route.params.StationName.Zh_tw,
+          title: route.params.StationName.Zh_tw.slice(11),
           headerStyle: {
             backgroundColor: colorMode == 'light' ? colors.yellow2 : colors.gray2,
           },
