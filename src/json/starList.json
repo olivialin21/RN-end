@@ -1,0 +1,49 @@
+[
+  {
+    "StationUID":"1",
+    "StationName":{
+      "zh_tw":"建國和平路口西北側",
+      "En":"en1"
+    },
+    "StationPosition": {
+      "PositionLon": 121.567904444,
+      "PositionLat": 25.0408578889
+    },
+    "AvailableRentBikes": 10,
+    "AvailableReturnBikes": 10,
+    "Distance":71,
+    "StationAdress":"建國南路二段與和平東路二段口西北側"
+  },
+  {
+    "StationUID":"2",
+    "StationName":{
+      "zh_tw":"和平東建國南路口",
+      "En":"en2"
+    },
+    "StationPosition": {
+      "PositionLon": 121.567904444,
+      "PositionLat": 25.0408578889
+    },
+    "ServiceType":2,
+    "AvailableRentBikes": 3,
+    "AvailableReturnBikes": 11,
+    "Distance":79,
+    "StationAdress":"和平東路/建國南路口(北側)"
+  },
+  {
+    "StationUID":"3",
+    "StationName":{
+      "zh_tw":"新生和平路口東北側",
+      "En":"en3"
+    },
+    "StationPosition": {
+      "PositionLon": 121.567904444,
+      "PositionLat": 25.0408578889
+    },
+    "ServiceType":1,
+    "AvailableRentBikes": 6,
+    "AvailableReturnBikes": 8,
+    "Distance":213,
+    "StationAdress":"新生南路二段與和平東路二段口東北側"
+  }
+]

@@ -1,15 +1,14 @@
 {
   "expo": {
-    "name": "app-end",
-    "slug": "app-end",
+    "name": "15YoubikeApp",
+    "slug": "15youbikeapp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#F6C543"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -28,6 +27,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "",
+    "githubUrl": "https://github.com/olivialin21/Youbike-App"
   }
 }
