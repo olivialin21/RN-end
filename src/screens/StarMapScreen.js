@@ -15,8 +15,14 @@ const StarMapScreen = ({ route }) => {
         initialRegion={{
           longitude: PositionLat,
           latitude: PositionLon,
-          longitudeDelta: 1,
-          latitudeDelta: 1,
+          longitudeDelta: 0.01,
+          latitudeDelta: 0.01,
+        }}
+        region={{
+          longitude: PositionLat,
+          latitude: PositionLon,
+          longitudeDelta: 0.01,
+          latitudeDelta: 0.01,
         }}
         animateToRegion
         flex={1}

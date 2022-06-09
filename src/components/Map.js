@@ -60,7 +60,7 @@ const Map = ({ method }) => {
   },[])
   
   useEffect (() => {
-    setRegionNow(region);
+    // setRegionNow(region);
     dispatch(setBikeStations(region,filter))
   },[region])
   
@@ -75,7 +75,7 @@ const Map = ({ method }) => {
           longitudeDelta: 0.01,
           latitudeDelta: 0.02,
         }}
-        region={regionNow}
+        region={region}
         flex={1}
         mapType="mutedStandard"
         // provider="google"
