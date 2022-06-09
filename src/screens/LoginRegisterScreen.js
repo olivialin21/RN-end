@@ -17,6 +17,7 @@ const LoginRegisterScreen = ({ navigation }) => {
     >
       <Image
         source={require('../images/img_bg.png')}
+        alt="bg"
         position="absolute"
         flex={1}
         resizeMode= "cover"
