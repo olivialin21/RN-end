@@ -21,14 +21,15 @@ const LoginRegisterScreen = ({ navigation }) => {
         flex={1}
         resizeMode= "cover"
       />
-      <Text mb={8}>123</Text>
+      <Text mb={8} color="#fff" fontSize={32}>Login / Sign in</Text>
       <HStack mb={5}>
-        <FontAwesomeIcon name="user" color="#fff" size={32} /><Input w="70%" ml={6} borderWidth="0"></Input>
+        <FontAwesomeIcon name="user" color="#fff" size={32} /><Input w="70%" ml={6}></Input>
       </HStack>
       <HStack>
         <FontAwesomeIcon name="lock" color="#fff" size={32} /><Input w="70%" ml={6}></Input>
       </HStack>
       <Pressable
+        mt={6}
         onPress={() => {
           dispatch(setLogin());
           console.log(hasLogin)

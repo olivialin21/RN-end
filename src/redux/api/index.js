@@ -16,7 +16,6 @@ const getAuthorizationHeader = function() {
 }
 
 export const getBikeStations = async ( location, filter ) => {
-	console.log("get")
   return await axios.get(`https://ptx.transportdata.tw/MOTC/v2/Bike/Station/NearBy?%24filter=%24spatialFilter=nearby(${location.latitude}%2C%20${location.longitude}%2C%20250)&%24format=JSON`,
   {
      headers:getAuthorizationHeader()

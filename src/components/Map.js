@@ -24,24 +24,6 @@ const Map = ({ method }) => {
   const [onCurrentLocation, setOnCurrentLocation] = useState(false);
   const [zoomRatio, setZoomRatio] = useState(1);
 
-  useEffect (() => {
-    if (Platform.OS === "android" && !Device.isDevice) {
-      setMsg(
-         "Oops, this will not work on Sketch in an Android emulator. Try it on your device!"
-      );
-      return
-    }
-    getLocation();
-  
-    dispatch(setRegion(region));
-    dispatch(setBikeStations(region,filter))
-  },[])
-  
-  useEffect (() => {
-    setRegionNow(region);
-    dispatch(setBikeStations(region,filter))
-  },[region])
-  
   const getLocation = async () => {
     let { status } = await Location.requestForegroundPermissionsAsync();
     if (status !== 'granted') {
@@ -64,6 +46,24 @@ const Map = ({ method }) => {
     }
   }
 
+  useEffect (() => {
+    if (Platform.OS === "android" && !Device.isDevice) {
+      setMsg(
+         "Oops, this will not work on Sketch in an Android emulator. Try it on your device!"
+      );
+      return
+    }
+    getLocation();
+  
+    dispatch(setRegion(region));
+    dispatch(setBikeStations(region,filter))
+  },[])
+  
+  useEffect (() => {
+    setRegionNow(region);
+    dispatch(setBikeStations(region,filter))
+  },[region])
+  
   return (
     <Box flex={1}>
       <Search/>
