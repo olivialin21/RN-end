@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { NativeBaseProvider, extendTheme, KeyboardAvoidingView } from 'native-base';
 import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar, useColorMode } from 'native-base';
+import LoginRegisterScreen from '../screens/LoginRegisterScreen';
 
 import MyTheme from '../Theme';
 import { MyTabs } from './MyTabs';
@@ -13,6 +14,7 @@ import { MyDrawer } from './MyDrawers';
 const Navigation = () => {
   const { colorMode } = useColorMode();
   const { display } = useSelector((state) => state.settings);
+  const login = useSelector((state) => state.account.hasLogin);
 
   // Define the config
   const config = {
@@ -30,16 +32,22 @@ const Navigation = () => {
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         flex={1}
       >
-        <NavigationContainer theme={MyTheme} >
-          <StatusBar
-            barStyle={colorMode == "light" ? "dark-content" : "light-content"}
-            backgroundColor={colorMode == "light" ? "white" : "black"}
-          />
-          {Platform.OS == 'ios' ?
-            <MyTabs /> :
-            <MyDrawer />
-          }
-        </NavigationContainer>
+        {
+          !login
+          ? <LoginRegisterScreen />
+          : (
+            <NavigationContainer theme={MyTheme} >
+              <StatusBar
+                barStyle={colorMode == "light" ? "dark-content" : "light-content"}
+                backgroundColor={colorMode == "light" ? "white" : "black"}
+              />
+            {Platform.OS == 'ios' ?
+              <MyTabs /> :
+              <MyDrawer />
+            }
+          </NavigationContainer>
+          )
+        }
       </KeyboardAvoidingView>
     </NativeBaseProvider>
 

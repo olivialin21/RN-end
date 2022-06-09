@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setBikeStations, setRegion } from "../redux/actions/mapActions";
 import { Icon } from 'react-native-elements'
 import ActionButton from '../components/ActionButton';
+import Search from '../components/Search';
 
 const Map = ({ method }) => {
   const dispatch = useDispatch();
@@ -23,17 +24,24 @@ const Map = ({ method }) => {
   const [onCurrentLocation, setOnCurrentLocation] = useState(false);
   const [zoomRatio, setZoomRatio] = useState(1);
 
-  const setRegionAndMarker = (location) => {
-    dispatch(setRegion(location));
-    // setMarker({
-    //   ...marker,
-    //   coord: {
-    //     longitude: location.longitude,
-    //     latitude: location.latitude,
-    //   },
-    // });
-  };
-
+  useEffect (() => {
+    if (Platform.OS === "android" && !Device.isDevice) {
+      setMsg(
+         "Oops, this will not work on Sketch in an Android emulator. Try it on your device!"
+      );
+      return
+    }
+    getLocation();
+  
+    dispatch(setRegion(region));
+    dispatch(setBikeStations(region,filter))
+  },[])
+  
+  useEffect (() => {
+    setRegionNow(region);
+    dispatch(setBikeStations(region,filter))
+  },[region])
+  
   const getLocation = async () => {
     let { status } = await Location.requestForegroundPermissionsAsync();
     if (status !== 'granted') {
@@ -42,41 +50,23 @@ const Map = ({ method }) => {
     }
     let location = await Location.getCurrentPositionAsync({});
     let locationAdd = {...location.coords, latitudeDelta: 0.005,longitudeDelta: 0.005}
-    setRegionAndMarker(locationAdd);
+    dispatch(setRegion(locationAdd));
     setOnCurrentLocation(true);
   };
 
   const onRegionChangeComplete = (rgn) => {
-    if (rgn.longitudeDelta > 0.02){
-      setZoomRatio(0.02 / rgn.longitudeDelta);
+    if (
+      Math.abs(rgn.latitude - region.latitude) > 0.0002 ||
+      Math.abs(rgn.longitude - region.longitude) > 0.0002
+    ) {
       dispatch(setRegion(rgn));
       setOnCurrentLocation(false);
-      console.log()
-    }else{
-      setZoomRatio(1);
     }
-  };
-
- useEffect (() => {
-  if (Platform.OS === "android" && !Device.isDevice) {
-    setMsg(
-       "Oops, this will not work on Sketch in an Android emulator. Try it on your device!"
-    );
-    return
   }
-  getLocation();
-
-  dispatch(setRegion(region));
-  dispatch(setBikeStations(region,filter))
-},[])
-
-useEffect (() => {
-  setRegionNow(region);
-  dispatch(setBikeStations(region,filter))
-},[region])
 
   return (
     <Box flex={1}>
+      <Search/>
       <MapView
         showsUserLocation={true}
         initialRegion={{

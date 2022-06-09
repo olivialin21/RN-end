@@ -12,8 +12,37 @@ import StarMapScreen from '../screens/StarMapScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import DisplaySettingsScreen from '../screens/DisplaySettingsScreen';
 import AccountSettingScreen from '../screens/AccountSettingScreen';
+import LoginRegisterScreen from '../screens/LoginRegisterScreen';
 
 const Stack = createNativeStackNavigator();
+
+export const LoginRigisterStack = ({ navigation }) => {
+  const { colors } = useTheme();
+  const { colorMode } = useColorMode();
+
+  return (
+    <Stack.Navigator >
+      <Stack.Screen
+        name="loginRegist"
+        component={LoginRegisterScreen}
+        options={{
+          headerLeft: () => (
+            Platform.OS == 'ios' ?
+              <></> :
+              <MaterialCommunityIcons
+                name={'menu'}
+                color={colorMode == 'light' ? 'black' : 'white'}
+                size={20}
+                onPress={() => navigation.openDrawer()}
+                style={{ marginRight: 20 }}
+              />
+          ),
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
 
 export const RentStack = ({ navigation }) => {
   const { colors } = useTheme();

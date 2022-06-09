@@ -15,7 +15,7 @@ export const MyTabs = () => {
 
   return (
     <Tab.Navigator
-      initialRouteName="HomeStack"
+      initialRouteName="LoginRegisterScreen"
       screenOptions={{
         tabBarInactiveTintColor: colorMode == 'light' ? 'white' : colors.black1 ,
         tabBarActiveTintColor: colorMode == 'light' ? colors.yellow2 : 'white',

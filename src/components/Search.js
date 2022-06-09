@@ -7,8 +7,12 @@ const Search = () => {
   const { colors } = useTheme();
 
   return (
-    <Box px={3}>
-      <FontAwesomeIcon name="search" color={colors.gray1} size={20}/>    
+    <Box
+      px={3}
+      _dark={{ bg: colors.black1 }}
+      _light={{ bg: "white" }}
+    >
+      {/* <FontAwesomeIcon name="search" color={colors.gray1} size={20}/>     */}
       <Input placeholder="Input" w="100%" pl={6}/>
     </Box>
   );  

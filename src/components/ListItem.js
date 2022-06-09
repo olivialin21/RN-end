@@ -1,6 +1,7 @@
 import React from "react";
 import { useTheme } from '@react-navigation/native';
 import { Text, HStack, Pressable } from "native-base";
+import { setLogin } from "../redux/actions/accountActions";
 import AntDesign from "react-native-vector-icons/AntDesign";
 
 const ListItem = ({ title, navigation, destination }) => {

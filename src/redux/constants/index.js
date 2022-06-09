@@ -15,3 +15,6 @@ export const ADD_STAR = 'ADD_STAR';
 // SET MAP
 export const SET_REGION = 'SET_REGION';
 export const SET_BIKE_STATIONS = 'SET_BIKE_STATIONS';
+
+// SET ACCOUNT
+export const SET_LOGIN = 'SET_LOGIN';

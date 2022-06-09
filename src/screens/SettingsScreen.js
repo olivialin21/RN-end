@@ -14,7 +14,7 @@ const SettingsScreen = ({ navigation }) => {
     >
       <Box>
         <ListItem title="顯示設定" navigation={navigation} destination="DisplaySetting"/>
-        <ListItem title="帳號設定" navigation={navigation} destination="AccountSetting"/>
+        <ListItem title="帳號設定" navigation={navigation} destination="loginRegist"/>
       </Box>            
     </Box>  
   );

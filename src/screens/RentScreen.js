@@ -6,7 +6,6 @@ import { Box } from "native-base";
 const RentScreen = ({ navigation }) => {
   return (
     <Box flex={1}>
-      <Search/>
       <Map method="rent"/>
     </Box>
   );
